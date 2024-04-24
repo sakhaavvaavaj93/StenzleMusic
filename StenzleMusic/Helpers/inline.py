@@ -35,7 +35,7 @@ pm_buttons = [
     ],
     [
         InlineKeyboardButton(
-            text="☁️ sᴏᴜʀᴄᴇ ☁️", url="https://github.com/sakhaavvaavaj93/kalyani"
+            text="☁️ sᴏᴜʀᴄᴇ ☁️", url="https://t.me/VRINDAAAVANAM/12"
         ),
         InlineKeyboardButton(text="🥀 ᴅᴇᴠᴇʟᴏᴩᴇʀ 🥀", user_id=config.OWNER_ID),
     ],
@@ -55,9 +55,10 @@ gp_buttons = [
     ],
     [
         InlineKeyboardButton(
-            text="☁️ sᴏᴜʀᴄᴇ ☁️", url="https://github.com/TheAnonymous2005/StenzleMusic"
+            text="☁️ sᴏᴜʀᴄᴇ ☁️", url="https://t.me/VRINDAAAVANAM/9"
         ),
         InlineKeyboardButton(text="🥀 ᴅᴇᴠᴇʟᴏᴩᴇʀ 🥀", user_id=config.OWNER_ID),
+        
     ],
 ]
 
