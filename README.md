@@ -21,7 +21,7 @@
 This is a light weight source, as a result it gives faster and better performance.
 
 - ❤️ Features:
-  - Audio+Video support.
+  - Audio support.
   - Song download.
   - Interactive UI.
   - Smooth and fast.
