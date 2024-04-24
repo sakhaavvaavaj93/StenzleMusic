@@ -23,7 +23,7 @@
       },
       "BOT_TOKEN": {
         "description": "A Bot's token from Botfather",
-        "value": "7177110300:AAFIspUhGBYpOmOM1MI0DRJ4MipN1gZHcUQ",
+        "value": "",
         "required": true
       },
       "OWNER_ID": {
@@ -33,7 +33,7 @@
       },
       "SESSION": {
         "description": "A pyrogram v2 string session from @StringFatherBot",
-        "value": "BQAYv8oAw4WfreQ9ZmAYN2WKEsbheJtXaGtyCFnWxbCZ2UXtZrjS5aLeo8O-hDWhuZlVP_6cfJ5p7ML4F4ORjO3_oV8g8TqCPeJGU2FT_qPOUpJRIuSVmstmMvw6bXqJWSayO1VYFVJWbu27oC8sx1C2-rGVW4AG1dwsi6dEb2IkYcqgZyMR4n1z-DCvHkZ_OgbJODqETnMxGdq7ZG7GBIkLmtNx-cjIXQSRtutg89uVLZgqzn2qR2QAeRdTJt6hrPBTCUOU2IMj75prdGCMWngw9sk2dCZ9HU_1CbBZ10m-cB467T6UJgMlkashgCqrZhhngS0Z5EMW15xhlP_J2vQRxOqnpgAAAAGmimwcAA",
+        "value": "",
         "required": true
       },
       "SUDO_USERS": {
@@ -43,7 +43,7 @@
       },
       "SUPPORT_CHAT": {
         "description": "Link of your telegram support group. (Must pe public)",
-        "value": "https://t.me/Mallus_Street",
+        "value": "https://t.me/KURUK_SHE_TRA",
         "required": false
       }
     },
