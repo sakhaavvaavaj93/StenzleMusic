@@ -6,7 +6,7 @@ from pyrogram.errors import FloodWait
 from pyrogram.types import Message
 
 from config import OWNER_ID
-from StenzleMusic import app, app2
+from StenzleMusic import app
 
 
 @app.on_message(filters.command("broadcast") & filters.user(OWNER_ID))
@@ -23,13 +23,13 @@ async def broadcast(_, message: Message):
         query = message.text.split(None, 1)[1]
     sent = 0
     chats = []
-    async for dialog in app2.get_dialogs():
+    async for dialog in app.get_dialogs():
         chats.append(int(dialog.chat.id))
     for i in chats:
         try:
-            await app2.forward_messages(
+            await app.forward_messages(
                 i, y, x
-            ) if message.reply_to_message else await app2.send_message(i, text=query)
+            ) if message.reply_to_message else await app.send_message(i, text=query)
             sent += 1
         except FloodWait as e:
             flood_time = int(e.value)
