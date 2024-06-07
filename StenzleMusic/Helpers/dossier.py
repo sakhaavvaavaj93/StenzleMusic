@@ -5,22 +5,21 @@ PM_START_TEXT = """
 ʜᴇʏ {0}, 🥀
 ๏ ᴛʜɪs ɪs** {1} !
 💖 i am official Music Bot .💖
-🌹 for any queries of this bot -> @BE_HALF_OF_KRISHNA🌹
+🌹 for any queries of this bot -> @FULL_CRUAL_MIND🌹
 ➻ ᴀ ғᴀsᴛ ᴀɴᴅ ᴘᴏᴡᴇʀғᴜʟ ᴍᴜsɪᴄ ᴘʟᴀʏᴇʀ ʙᴏᴛ
 🎭 any one wish to add me to UR Group,
-    then , Contact to @BE_HALF_OF_KRISHNA 🎀
+    then , Contact to @FULL_CRUAL_MIND 🎀
 """
 
 START_TEXT = """
 **ʜᴇʏ** {0}, 🥀
   {1} ᴄᴀɴ ɴᴏᴡ ᴩʟᴀʏ sᴏɴɢs ɪɴ {2}.
   💖 i am official Music Bot💖
-🌹 for any queries of this bot -> @BE_HALF_OF_KRISHNA🌹
+🌹 for any queries of this bot -> @FULL_CRUAL_MIND🌹
 ➻ ᴀ ғᴀsᴛ ᴀɴᴅ ᴘᴏᴡᴇʀғᴜʟ ᴍᴜsɪᴄ ᴘʟᴀʏᴇʀ ʙᴏt
 🎭 any one wish to add me to UR Group,
-    then , Contact to @BE_HALF_OF_KRISHNA 🎀
+    then , Contact to @FULL_CRUAL_MIND 🎀
 ──────────────────
-➻ ғᴏʀ ɢᴇᴛᴛɪɴɢ ʜᴇʟᴘ ᴀʙᴏᴜᴛ ᴍᴇ ᴏʀ ɪғ ʏᴏᴜ ᴡᴀɴɴᴀ ᴀsᴋ sᴏᴍᴇᴛʜɪɴɢ ʏᴏᴜ ᴄᴀɴ ᴊᴏɪɴ ᴍʏ [sᴜᴘᴘᴏʀᴛ ᴄʜᴀᴛ]({3}).
 """
 
 HELP_TEXT = f"""
