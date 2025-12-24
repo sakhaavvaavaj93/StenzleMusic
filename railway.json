@@ -3,7 +3,7 @@
     "env": {
       "API_HASH": "",
       "API_ID": "",
-      "ASSISTANT_SESSION": "",
+      "Stenzle_SESSION": "",
       "BOT_TOKEN": "",
       "OWNER_ID": "",
       "DATABASE_URL": "",
