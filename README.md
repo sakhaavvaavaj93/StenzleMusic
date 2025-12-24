@@ -38,6 +38,10 @@ This is a light weight source, as a result it gives faster and better performanc
 [![Deploy+On+Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/sakhaavvaavaj93/StenzleMusic/tree/Master)
 ## 🚀 Deploy Locally
 
+<p align="center">
+<a href="https://render.com/deploy?repo=https://github.com/kustbots/frozenvcmusicbot"><img src="https://img.shields.io/badge/-Deploy%20to%20Render-blueviolet?style=for-the-badge&logo=render"></a>
+</p>
+
 `Tutorial coming soon.`
 
 ------
