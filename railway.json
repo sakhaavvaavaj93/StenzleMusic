@@ -6,7 +6,9 @@
       "ASSISTANT_SESSION": "",
       "BOT_TOKEN": "",
       "OWNER_ID": "",
-      "MongoDB_url": ""
+      "DATABASE_URL": "",
+      "LOGGER_ID": "",
+      
     }
   },
   "deploy": {
