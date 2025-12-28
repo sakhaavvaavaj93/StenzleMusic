@@ -39,7 +39,7 @@ This is a light weight source, as a result it gives faster and better performanc
 ## 🚀 Deploy Locally
 
 <p align="center">
-<a href="https://render.com/deploy?repo=https://github.com/https://github.com/sakhaavvaavaj93/StenzleMusic/tree/Master"><img src="https://img.shields.io/badge/-Deploy%20to%20Render-blueviolet?style=for-the-badge&logo=render"></a>
+<a href="https://render.com/deploy?repo=https://github.com/sakhaavvaavaj93/StenzleMusic/tree/Master"><img src="https://img.shields.io/badge/-Deploy%20to%20Render-blueviolet?style=for-the-badge&logo=render"></a>
 </p>
 
 `Tutorial coming soon.`
