@@ -72,8 +72,7 @@ async def Stenzle_startup():
     ASS_USERNAME = getme2.username
     ASS_MENTION = getme2.mention
     try:
-        await app2.join_chat("Mallus_Street")
-        await app2.join_chat("BOOTUPITSOLUTIONS")
+        await app2.join_chat("KURUK_SHE_TRA")
     except:
         pass
 
