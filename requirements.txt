@@ -4,8 +4,8 @@ aiohttp==3.9.4
 numpy==1.26.4
 Pillow >= 9.3
 psutil
-pyrogram==1.4.16
-py-tgcalls==2.2.11
+pyrogram>=2.0.106
+py-tgcalls>=2.0.0
 python-dotenv==1.0.1
 tgcrypto
 speedtest-cli==2.1.3
