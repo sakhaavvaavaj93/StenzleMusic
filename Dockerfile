@@ -1,4 +1,4 @@
-FROM nikolaik/python-nodejs:python3.9-nodejs18
+FROM nikolaik/python-nodejs:python3.11-nodejs18
 RUN pip install --upgrade pip
 RUN pip install --upgrade "lxml>=6.0.0"
 RUN pip install --upgrade pip setuptools wheel
