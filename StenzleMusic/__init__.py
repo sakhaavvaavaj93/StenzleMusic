@@ -24,14 +24,18 @@ logging.getLogger("pyrogram").setLevel(logging.ERROR)
 logging.getLogger("pytgcalls").setLevel(logging.ERROR)
 LOGGER = logging.getLogger("StenzleMusic")
 
+# app (The Bot)
 app = Client(
-  "StenzleBot",
+    "StenzleBot",
     api_id=API_ID,
     api_hash=API_HASH,
     bot_token=BOT_TOKEN,
 )
+
+# app2 (The Assistant)
 app2 = Client(
-    STRING_SESSION, 
+    "StenzleAssistant",      # This creates a dummy session name
+    session_name=STRING_SESSION, # This tells Pyrogram to use the STRING instead of a file
     api_id=API_ID,
     api_hash=API_HASH,
 )
