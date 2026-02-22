@@ -31,8 +31,7 @@ app = Client(
     bot_token=BOT_TOKEN,
 )
 app2 = Client(
-    "StenzleAssistant",
-    session_name=STRING_SESSION,  # Use 'session_name' for Pyrogram 1.4.16
+    STRING_SESSION, 
     api_id=API_ID,
     api_hash=API_HASH,
 )
