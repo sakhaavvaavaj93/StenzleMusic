@@ -46,7 +46,10 @@ async def Stenzle_startup():
     await idle()
 
 
-if __name__ == "__main__":
-    asyncio.get_event_loop().run_until_complete(Stenzle_startup())
+try:
+    main_loop = asyncio.get_event_loop()
+except RuntimeError:
+    main_loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(main_loop)
     LOGGER.error("Stenzle Music Bot Stopped.")
 
