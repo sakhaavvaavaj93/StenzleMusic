@@ -25,12 +25,13 @@ logging.getLogger("pytgcalls").setLevel(logging.ERROR)
 LOGGER = logging.getLogger("StenzleMusic")
 
 app = Client(
-    name="StenzleBot",
+  "StenzleBot",
     api_id=API_ID,
     api_hash=API_HASH,
     bot_token=BOT_TOKEN,
 )
 app2 = Client(
+    "StenzleAssistant",
     session_name=STRING_SESSION,  # Use 'session_name' for Pyrogram 1.4.16
     api_id=API_ID,
     api_hash=API_HASH,
