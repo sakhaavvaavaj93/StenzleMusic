@@ -9,6 +9,9 @@ from pytgcalls import PyTgCalls
 
 import config
 
+API_ID = int(getenv("API_ID"))
+API_HASH = getenv("API_HASH")
+BOT_TOKEN = getenv("BOT_TOKEN")
 StartTime = time.time()
 STRING_SESSION = getenv("STRING_SESSION")
 logging.basicConfig(
@@ -22,10 +25,10 @@ logging.getLogger("pytgcalls").setLevel(logging.ERROR)
 LOGGER = logging.getLogger("StenzleMusic")
 
 app = Client(
-    "StenzleMusic",
-    config.API_ID,
-    config.API_HASH,
-    bot_token=config.BOT_TOKEN,
+    name="StenzleBot",
+    api_id=API_ID,
+    api_hash=API_HASH,
+    bot_token=BOT_TOKEN,
 )
 
 app2 = Client(
