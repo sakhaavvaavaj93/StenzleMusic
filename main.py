@@ -1,1 +1,1 @@
-python3 -m StenzleMusic
+python3 -m StenzleMusic/__main__.py
