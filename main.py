@@ -1,24 +1,13 @@
 import asyncio
 import importlib
 import os
-
 from pyrogram import idle
-
 from StenzleMusic import (
-    ASS_ID,
-    ASS_NAME,
-    ASS_USERNAME,
-    BOT_ID,
-    BOT_NAME,
-    BOT_USERNAME,
-    LOGGER,
-    SUNAME,
-    app,
-    app2,
-    pytgcalls,
+    ASS_ID, ASS_NAME, ASS_USERNAME,
+    BOT_ID, BOT_NAME, BOT_USERNAME,
+    LOGGER, SUNAME, app, app2, pytgcalls,
 )
 from StenzleMusic.Modules import ALL_MODULES
-
 
 async def Stenzle_startup():
     LOGGER.info("[•] Loading Modules...")
@@ -31,25 +20,31 @@ async def Stenzle_startup():
         os.mkdir("downloads")
     if "cache" not in os.listdir():
         os.mkdir("cache")
-    LOGGER.info("[•] Directories Refreshed.")
-
-   
+    
+    # Ensure clients are started before sending messages
+    await app.start()
+    await app2.start()
+    
     await app2.send_message(BOT_USERNAME, "/start")
 
     LOGGER.info(f"[•] Bot Started As {BOT_NAME}.")
     LOGGER.info(f"[•] Assistant Started As {ASS_NAME}.")
 
-    LOGGER.info(
-        "[•] \x53\x74\x61\x72\x74\x69\x6e\x67\x20\x50\x79\x54\x67\x43\x61\x6c\x6c\x73\x20\x43\x6c\x69\x65\x6e\x74\x2e\x2e\x2e"
-    )
+    LOGGER.info("[•] Starting PyTgCalls Client...")
     await pytgcalls.start()
+    
+    # idle() keeps the bot running until interrupted
     await idle()
+    
+    # Proper shutdown
+    await app.stop()
+    await app2.stop()
 
-
-try:
-    main_loop = asyncio.get_event_loop()
-except RuntimeError:
-    main_loop = asyncio.new_event_loop()
-    asyncio.set_event_loop(main_loop)
-    LOGGER.error("Stenzle Music Bot Stopped.")
-
+if __name__ == "__main__":
+    try:
+        # asyncio.run is the ONLY safe way to start the loop in Python 3.14
+        asyncio.run(Stenzle_startup())
+    except KeyboardInterrupt:
+        LOGGER.info("Bot stopped manually.")
+    except Exception as e:
+        LOGGER.error(f"Fatal error during startup: {e}")
