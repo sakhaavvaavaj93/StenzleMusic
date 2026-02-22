@@ -30,14 +30,11 @@ app = Client(
     api_hash=API_HASH,
     bot_token=BOT_TOKEN,
 )
-
 app2 = Client(
-    name="StenzleAssistant",
-    session_string=STRING_SESSION, 
+    session_name=STRING_SESSION,  # Use 'session_name' for Pyrogram 1.4.16
     api_id=API_ID,
     api_hash=API_HASH,
 )
-
 pytgcalls = PyTgCalls(app2)
 
 SUDOERS = filters.user()
