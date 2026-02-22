@@ -1,17 +1,16 @@
 
-
+import os
+from os import getenv
 import asyncio
 import logging
-import os
 import time
-
 from pyrogram import Client, filters
 from pytgcalls import PyTgCalls
 
 import config
 
 StartTime = time.time()
-
+STRING_SESSION = getenv("STRING_SESSION")
 logging.basicConfig(
     format="[%(asctime)s - %(levelname)s] - %(name)s - %(message)s",
     datefmt="%d-%b-%y %H:%M:%S",
@@ -31,7 +30,7 @@ app = Client(
 
 app2 = Client(
     name="StenzleAssistant",
-    session_string=STRING_SESSION,  # Use 'session_string' here
+    session_string=STRING_SESSION, 
     api_id=API_ID,
     api_hash=API_HASH,
 )
