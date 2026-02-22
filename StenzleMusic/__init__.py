@@ -6,6 +6,7 @@ import logging
 import time
 from pyrogram import Client, filters
 from pytgcalls import PyTgCalls
+from pyrogram import idle
 
 import config
 
@@ -32,17 +33,15 @@ app = Client(
     bot_token=BOT_TOKEN,
 )
 
-# app2 (The Assistant)
 app2 = Client(
-    "StenzleAssistant",      # This creates a dummy session name
-    session_name=STRING_SESSION, # This tells Pyrogram to use the STRING instead of a file
+    STRING_SESSION, 
     api_id=API_ID,
     api_hash=API_HASH,
 )
 pytgcalls = PyTgCalls(app2)
-
 SUDOERS = filters.user()
-SUNAME = config.SUPPORT_CHAT.split("me/")[1]
+# Ensure config has SUPPORT_CHAT defined
+SUNAME = config.SUPPORT_CHAT.split("me/")[1] if "me/" in config.SUPPORT_CHAT else config.SUPPORT_CHAT
 
 
 async def Stenzle_startup():
@@ -65,6 +64,8 @@ async def Stenzle_startup():
     BOT_MENTION = getme.mention
 
     await app2.start()
+    
+    await idle()
     LOGGER.info(
         "[•] \x42\x6f\x6f\x74\x69\x6e\x67\x20\x46\x61\x6c\x6c\x65\x6e\x20\x4d\x75\x73\x69\x63\x20\x41\x73\x73\x69\x73\x74\x61\x6e\x74\x2e\x2e\x2e"
     )
@@ -97,4 +98,8 @@ async def Stenzle_startup():
     )
 
 
-asyncio.get_event_loop().run_until_complete(Stenzle_startup())
+if __name__ == "__main__":
+    try:
+        asyncio.get_event_loop().run_until_complete(Stenzle_startup())
+    except KeyboardInterrupt:
+        pass
