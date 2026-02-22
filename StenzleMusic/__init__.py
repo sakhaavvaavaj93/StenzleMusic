@@ -30,10 +30,10 @@ app = Client(
 )
 
 app2 = Client(
-    "StenzleAss",
-    api_id=config.API_ID,
-    api_hash=config.API_HASH,
-    session_name=str(config.SESSION),
+    name="StenzleAssistant",
+    session_string=STRING_SESSION,  # Use 'session_string' here
+    api_id=API_ID,
+    api_hash=API_HASH,
 )
 
 pytgcalls = PyTgCalls(app2)
