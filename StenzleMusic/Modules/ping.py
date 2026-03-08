@@ -1,11 +1,9 @@
 
 import time
 from datetime import datetime
-
 import psutil
-from pyrogram import filters
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
-
+from hydrogram import filters
+from hydrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 import config
 from StenzleMusic import BOT_NAME, StartTime, app
 from StenzleMusic.Helpers import get_readable_time
