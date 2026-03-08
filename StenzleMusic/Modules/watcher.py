@@ -1,14 +1,12 @@
 
 from hydrogram import filters
 from hydrogram.types import Message
-from pytgcalls.types import AudioPiped, HighQualityAudio, Update
-
+from pytgcalls.types import MediaStream, AudioQuality, Update
 from StenzleMusic import BOT_ID, BOT_USERNAME, app, app2, Stenzledb, pytgcalls
 from StenzleMusic.Helpers import _clear_, buttons, gen_thumb
 
 welcome = 20
 close = 30
-
 
 @app.on_message(filters.video_chat_started, group=welcome)
 @app.on_message(filters.video_chat_ended, group=close)
@@ -60,6 +58,7 @@ async def on_stream_end(pytgcalls, update: Update):
             chat_id=chat_id,
             text="» ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ ɴᴇxᴛ ᴛʀᴀᴄᴋ ғʀᴏᴍ ᴏ̨ᴜᴇᴜᴇ...",
         )
+        # Fetching data from queue
         title = get[0]["title"]
         duration = get[0]["duration"]
         file_path = get[0]["file_path"]
@@ -68,15 +67,16 @@ async def on_stream_end(pytgcalls, update: Update):
         user_id = get[0]["user_id"]
         get.pop(0)
 
-        stream = AudioPiped(file_path, audio_parameters=HighQualityAudio())
+        # FIXED: Updated to MediaStream and AudioQuality.STUDIO
+        stream = MediaStream(file_path, audio_quality=AudioQuality.STUDIO)
 
         try:
             await pytgcalls.change_stream(
                 chat_id,
                 stream,
             )
-        except:
+        except Exception as e:
             await _clear_(chat_id)
             return await pytgcalls.leave_group_call(chat_id)
-        await process.delete()
         
+        await process.delete()
