@@ -1,7 +1,5 @@
-
-
-from pyrogram import filters
-from pyrogram.types import CallbackQuery, InlineKeyboardMarkup
+from hydrogram import filters
+from hydrogram.types import CallbackQuery, InlineKeyboardMarkup
 from pytgcalls.types import AudioPiped, HighQualityAudio
 
 from StenzleMusic import (
