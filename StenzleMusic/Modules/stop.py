@@ -1,7 +1,7 @@
 
 
-from pyrogram import filters
-from pyrogram.types import Message
+from hydrogram import filters
+from hydrogram.types import Message
 
 from StenzleMusic import app, pytgcalls
 from StenzleMusic.Helpers import _clear_, admin_check, close_key
