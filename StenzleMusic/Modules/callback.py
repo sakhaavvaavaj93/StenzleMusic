@@ -1,7 +1,6 @@
 from hydrogram import filters
 from hydrogram.types import CallbackQuery, InlineKeyboardMarkup
-from pytgcalls.types import AudioPiped, HighQualityAudio
-
+from pytgcalls.types import MediaStream, AudioQuality
 from StenzleMusic import (
     ASS_ID,
     ASS_NAME,
@@ -130,7 +129,9 @@ async def admin_cbs(_, query: CallbackQuery):
             user_id = get[0]["user_id"]
             get.pop(0)
 
-            stream = AudioPiped(file_path, audio_parameters=HighQualityAudio())
+            # FIXED: Changed AudioPiped to MediaStream and HighQualityAudio to AudioQuality.STUDIO
+            stream = MediaStream(file_path, audio_quality=AudioQuality.STUDIO)
+            
             try:
                 await pytgcalls.change_stream(
                     query.message.chat.id,
