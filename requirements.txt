@@ -11,7 +11,7 @@ speedtest-cli==2.1.3
 # Use the latest Pyrogram (v2.0+) to fix "msg_id too low" errors
 pyrogram>=2.0.106
 
-# Fix: py-tgcalls 1.1.6 requires ntgcalls >= 1.0.4
-ntgcalls>=1.0.4
-py-tgcalls>=2.2.11
+# Fix: py-tgcalls 2.4.0 requires ntgcalls>=2.1.0
+ntgcalls>=2.1.0
+py-tgcalls>=2.4.0
 
