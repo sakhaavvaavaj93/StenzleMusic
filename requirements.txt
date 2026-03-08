@@ -10,6 +10,7 @@ speedtest-cli==2.1.3
 # Use Hydrogram instead of Pyrogram for better PyTgCalls compatibility
 hydrogram
 # The missing search library
+yt-dlp
 youtube-search-python
 youtube-search
 # Stable versions for PyTgCalls
