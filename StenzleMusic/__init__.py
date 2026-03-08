@@ -41,9 +41,12 @@ app2 = Client(
     session_string=STRING_SESSION
 )
 
-# Initialize PyTgCalls (v2.x compatible)
-# This MUST be version 2.2.11+ in your requirements.txt
-pytgcalls = PyTgCalls(app2)
+from pytgcalls import PyTgCalls
+try:
+    pytgcalls = PyTgCalls(app2)
+except Exception as e:
+    print(f"Failed to initialize PyTgCalls: {e}")
+    pytgcalls = None
 
 # 4. Global variables & Helper Logic
 SUDOERS = filters.user()
