@@ -1,7 +1,7 @@
 import asyncio
 import importlib
 import os
-from pyrogram import idle
+from hydrogram import idle  # Changed from pyrogram to hydrogram
 from StenzleMusic import (
     ASS_ID, ASS_NAME, ASS_USERNAME,
     BOT_ID, BOT_NAME, BOT_USERNAME,
