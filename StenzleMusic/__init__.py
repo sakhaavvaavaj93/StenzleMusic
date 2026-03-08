@@ -7,25 +7,26 @@ from pyrogram import Client, filters, idle
 from pytgcalls import PyTgCalls
 import config
 
-# Environment Variables
+# 1. Environment Variables
 API_ID = int(getenv("API_ID"))
 API_HASH = getenv("API_HASH")
 BOT_TOKEN = getenv("BOT_TOKEN")
 STRING_SESSION = getenv("STRING_SESSION")
 StartTime = time.time()
 
-# Logging Setup
+# 2. Logging Setup
 logging.basicConfig(
     format="[%(asctime)s - %(levelname)s] - %(name)s - %(message)s",
     datefmt="%d-%b-%y %H:%M:%S",
     handlers=[logging.FileHandler("Stenzlelogs.txt"), logging.StreamHandler()],
     level=logging.INFO,
 )
+# Suppress noisy logs from libraries
 logging.getLogger("pyrogram").setLevel(logging.ERROR)
 logging.getLogger("pytgcalls").setLevel(logging.ERROR)
 LOGGER = logging.getLogger("StenzleMusic")
 
-# app (The Bot)
+# 3. Client Definitions
 app = Client(
     "StenzleBot",
     api_id=API_ID,
@@ -33,7 +34,6 @@ app = Client(
     bot_token=BOT_TOKEN,
 )
 
-# app2 (The Assistant/Userbot)
 app2 = Client(
     name="StenzleAssistant",
     api_id=API_ID,
@@ -41,16 +41,22 @@ app2 = Client(
     session_string=STRING_SESSION
 )
 
-# Pytgcalls v2.x initialization
+# Initialize PyTgCalls (v2.x compatible)
 pytgcalls = PyTgCalls(app2)
 
+# 4. Global variables & Helper Logic
 SUDOERS = filters.user()
-# Fixed logic for Support Username
+BOT_ID = BOT_NAME = BOT_USERNAME = BOT_MENTION = None
+ASS_ID = ASS_NAME = ASS_USERNAME = ASS_MENTION = None
+Stenzledb = {}
+
+# Support Username logic
 if "me/" in config.SUPPORT_CHAT:
     SUNAME = config.SUPPORT_CHAT.split("me/")[1]
 else:
     SUNAME = config.SUPPORT_CHAT.replace("@", "")
 
+# 5. Startup Function
 async def Stenzle_startup():
     os.system("clear")
     LOGGER.info("Starting Stenzle Music Bot...")
@@ -58,28 +64,31 @@ async def Stenzle_startup():
     global BOT_ID, BOT_NAME, BOT_USERNAME, BOT_MENTION, Stenzledb
     global ASS_ID, ASS_NAME, ASS_USERNAME, ASS_MENTION, SUDOERS
 
-    # Start Bot
+    # Start Main Bot
     await app.start()
     getme = await app.get_me()
-    BOT_ID, BOT_NAME, BOT_USERNAME, BOT_MENTION = getme.id, getme.first_name, getme.username, getme.mention
+    BOT_ID = getme.id
+    BOT_NAME = getme.first_name
+    BOT_USERNAME = getme.username
+    BOT_MENTION = getme.mention
 
     # Start Assistant
     await app2.start()
     getme2 = await app2.get_me()
     ASS_ID = getme2.id
-    ASS_NAME = getme2.first_name + " " + (getme2.last_name or "")
+    ASS_NAME = getme2.first_name + (" " + getme2.last_name if getme2.last_name else "")
     ASS_USERNAME = getme2.username
     ASS_MENTION = getme2.mention
     
-    # Start Pytgcalls
+    # Start PyTgCalls
     await pytgcalls.start()
     
     try:
         await app2.join_chat("KURUK_SHE_TRA")
-    except:
+    except Exception:
         pass
 
-    # Sudoers Setup
+    # Sudoers Configuration
     ANON = 1356469075
     for SUDOER in config.SUDO_USERS:
         SUDOERS.add(SUDOER)
@@ -87,18 +96,18 @@ async def Stenzle_startup():
         SUDOERS.add(config.OWNER_ID)
     SUDOERS.add(ANON)
 
-    Stenzledb = {}
     LOGGER.info("[•] Stenzle Music Clients Booted Successfully.")
     
-    # KEEP RUNNING
+    # Idle keeps the clients alive
     await idle()
     
-    # Graceful shutdown
+    # Graceful shutdown on stop
     await app.stop()
     await app2.stop()
 
+# 6. Execution
 if __name__ == "__main__":
     try:
         asyncio.get_event_loop().run_until_complete(Stenzle_startup())
     except KeyboardInterrupt:
-        pass
+        LOGGER.info("Bot stopped by user.")
