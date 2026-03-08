@@ -1,15 +1,13 @@
-
 import asyncio
 import os
-
-from pyrogram import filters
-from pyrogram.enums import ChatMemberStatus
-from pyrogram.errors import (
+from hydrogram import filters
+from hydrogram.enums import ChatMemberStatus
+from hydrogram.errors import (
     ChatAdminRequired,
     UserAlreadyParticipant,
     UserNotParticipant,
 )
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
+from hydrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from pytgcalls import StreamType
 from pytgcalls.exceptions import NoActiveGroupCall, UnMuteNeeded
 from pytgcalls.types import AudioPiped, HighQualityAudio
