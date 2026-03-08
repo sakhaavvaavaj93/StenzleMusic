@@ -2,8 +2,8 @@
 
 from typing import Union
 
-from pyrogram.enums import MessageEntityType
-from pyrogram.types import Audio, Message, Voice
+from hydrogram.enums import MessageEntityType
+from hydrogram.types import Audio, Message, Voice
 
 
 def get_url(message_1: Message) -> Union[str, None]:
