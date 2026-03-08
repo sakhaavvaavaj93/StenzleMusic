@@ -1,6 +1,6 @@
 from hydrogram import filters
 from hydrogram.types import Message
-from pytgcalls.types import AudioPiped, HighQualityAudio
+from pytgcalls.types import MediaStream, AudioQuality
 from StenzleMusic import BOT_USERNAME, app, Stenzledb, pytgcalls
 from StenzleMusic.Helpers import _clear_, admin_check, buttons, close_key, gen_thumb
 
@@ -28,13 +28,17 @@ async def skip_str(_, message: Message):
         user_id = get[0]["user_id"]
         get.pop(0)
 
-        stream = AudioPiped(file_path, audio_parameters=HighQualityAudio())
+        # FIXED: Changed AudioPiped to MediaStream and set quality to STUDIO
+        stream = MediaStream(file_path, audio_quality=AudioQuality.STUDIO)
+        
         try:
+            # Note: change_stream is used for switching tracks in an active call
             await pytgcalls.change_stream(
                 message.chat.id,
                 stream,
             )
-        except:
+        except Exception as e:
+            LOGGER.error(f"Skip error: {e}")
             await _clear_(message.chat.id)
             return await pytgcalls.leave_group_call(message.chat.id)
 
