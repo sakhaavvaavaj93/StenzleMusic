@@ -3,6 +3,7 @@ from hydrogram.types import (
     InlineKeyboardMarkup,
     InlineQueryResultPhoto,
 )
+from youtube_search import YoutubeSearch
 from youtubesearchpython.__future__ import VideosSearch
 
 from StenzleMusic import BOT_NAME, app
