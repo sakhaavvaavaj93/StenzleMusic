@@ -20,7 +20,7 @@ WORKDIR /app
 COPY . /app/
 
 # 4. Install dependencies
-# Note: Ensure requirements.txt has ntgcalls>=1.0.4
+# Match your updated requirements (ntgcalls>=2.1.0)
 RUN pip3 install --no-cache-dir --upgrade -r requirements.txt
 
 # 5. Start the bot
