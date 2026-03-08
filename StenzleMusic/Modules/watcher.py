@@ -1,6 +1,6 @@
 
-from pyrogram import filters
-from pyrogram.types import Message
+from hydrogram import filters
+from hydrogram.types import Message
 from pytgcalls.types import AudioPiped, HighQualityAudio, Update
 
 from StenzleMusic import BOT_ID, BOT_USERNAME, app, app2, Stenzledb, pytgcalls
