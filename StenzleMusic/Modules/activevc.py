@@ -1,7 +1,7 @@
 
 
-from pyrogram import filters
-from pyrogram.types import Message
+from hydrogram import filters
+from hydrogram.types import Message
 
 from StenzleMusic import SUDOERS, app
 from StenzleMusic.Helpers.active import get_active_chats
