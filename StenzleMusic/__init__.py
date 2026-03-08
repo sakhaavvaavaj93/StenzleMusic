@@ -34,7 +34,7 @@ app = Client(
 )
 
 app2 = Client(
-    name=config.STRING_SESSION,  # If STRING_SESSION is missing, this is None
+    name=config.STRING_SESSION or "stenzle_session",
     api_id=config.API_ID,
     ...
 )
