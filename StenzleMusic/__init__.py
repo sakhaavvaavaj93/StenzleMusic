@@ -34,10 +34,11 @@ app = Client(
 )
 
 app2 = Client(
-    STRING_SESSION, 
-    api_id=API_ID,
-    api_hash=API_HASH,
+    name=config.STRING_SESSION,  # If STRING_SESSION is missing, this is None
+    api_id=config.API_ID,
+    ...
 )
+
 pytgcalls = PyTgCalls(app2)
 SUDOERS = filters.user()
 # Ensure config has SUPPORT_CHAT defined
