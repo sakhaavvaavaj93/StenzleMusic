@@ -8,7 +8,8 @@ from hydrogram.errors import (
     UserNotParticipant,
 )
 from hydrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
-from pytgcalls.exceptions import NoActiveGroupCall, UnMuteNeeded
+# REMOVED: UnMuteNeeded (no longer exists in v2.0+)
+from pytgcalls.exceptions import NoActiveGroupCall
 from pytgcalls.types import MediaStream, AudioQuality
 from youtube_search import YoutubeSearch
 
@@ -155,7 +156,6 @@ async def play(_, message: Message):
     else:
         if len(message.command) < 2:
             return await Stenzle.edit_text("» ᴡʜᴀᴛ ᴅᴏ ʏᴏᴜ ᴡᴀɴɴᴀ ᴘʟᴀʏ ʙᴀʙʏ ?")
-  #      await Stenzle.edit_text("🔎")
         query = message.text.split(None, 1)[1]
         try:
             results = YoutubeSearch(query, max_results=1).to_dict()
@@ -183,6 +183,7 @@ async def play(_, message: Message):
         videoid = videoid
     except:
         videoid = "fuckitstgaudio"
+        
     if await is_active_chat(message.chat.id):
         await put(
             message.chat.id,
@@ -193,9 +194,7 @@ async def play(_, message: Message):
             ruser,
             message.from_user.id,
         )
-        position = len(Stenzledb.get(message.chat.id))
     else:
-        # Fixed: Updated to MediaStream and AudioQuality.STUDIO
         stream = MediaStream(file_path, audio_quality=AudioQuality.STUDIO)
         try:
             await pytgcalls.join_group_call(
@@ -206,11 +205,9 @@ async def play(_, message: Message):
             return await Stenzle.edit_text(
                 "**» ɴᴏ ᴀᴄᴛɪᴠᴇ ᴠɪᴅᴇᴏᴄʜᴀᴛ ғᴏᴜɴᴅ.**\n\nᴩʟᴇᴀsᴇ ᴍᴀᴋᴇ sᴜʀᴇ ʏᴏᴜ sᴛᴀʀᴛᴇᴅ ᴛʜᴇ ᴠɪᴅᴇᴏᴄʜᴀᴛ."
             )
+        # Note: UnMuteNeeded block is removed as it's no longer a distinct importable exception
         
-        except UnMuteNeeded:
-            return await Stenzle.edit_text(
-                f"» {BOT_NAME} ᴀssɪsᴛᴀɴᴛ ɪs ᴍᴜᴛᴇᴅ ᴏɴ ᴠɪᴅᴇᴏᴄʜᴀᴛ,\n\nᴘʟᴇᴀsᴇ ᴜɴᴍᴜᴛᴇ {ASS_MENTION} ᴏɴ ᴠɪᴅᴇᴏᴄʜᴀᴛ ᴀɴᴅ ᴛʀʏ ᴘʟᴀʏɪɴɢ ᴀɢᴀɪɴ."
-            )
         await stream_on(message.chat.id)
         await add_active_chat(message.chat.id)
+        
     return await Stenzle.delete()
