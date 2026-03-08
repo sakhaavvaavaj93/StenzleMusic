@@ -16,7 +16,7 @@ OWNER_ID = int(getenv("OWNER_ID"))
 PING_IMG = getenv("PING_IMG" , "https://telegra.ph/file/89fd3e2bf5aaaef0b1373.jpg")
 START_IMG = getenv("START_IMG", "https://telegra.ph/file/fe24e1a62b4e14bf8f4eb.jpg")
 
-SESSION = getenv("SESSION", None)
+STRING_SESSION = getenv("STRING_SESSION", None)
 
 SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/KURUK_SHE_TRA")
 SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/VRINDAAAVANAM")
