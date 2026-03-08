@@ -11,7 +11,7 @@ speedtest-cli==2.1.3
 hydrogram
 # The missing search library
 youtube-search-python
-youtube_search
+youtube-search
 # Stable versions for PyTgCalls
 py-tgcalls>=2.2.11
 ntgcalls>=2.1.0
