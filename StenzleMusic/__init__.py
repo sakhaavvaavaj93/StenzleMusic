@@ -42,6 +42,7 @@ app2 = Client(
 )
 
 # Initialize PyTgCalls (v2.x compatible)
+# This MUST be version 2.2.11+ in your requirements.txt
 pytgcalls = PyTgCalls(app2)
 
 # 4. Global variables & Helper Logic
@@ -50,7 +51,7 @@ BOT_ID = BOT_NAME = BOT_USERNAME = BOT_MENTION = None
 ASS_ID = ASS_NAME = ASS_USERNAME = ASS_MENTION = None
 Stenzledb = {}
 
-# Support Username logic
+# Support Username logic (Safe Split)
 if "me/" in config.SUPPORT_CHAT:
     SUNAME = config.SUPPORT_CHAT.split("me/")[1]
 else:
@@ -98,10 +99,10 @@ async def Stenzle_startup():
 
     LOGGER.info("[•] Stenzle Music Clients Booted Successfully.")
     
-    # Idle keeps the clients alive
+    # Keep running until interrupted
     await idle()
     
-    # Graceful shutdown on stop
+    # Graceful shutdown
     await app.stop()
     await app2.stop()
 
@@ -111,3 +112,5 @@ if __name__ == "__main__":
         asyncio.get_event_loop().run_until_complete(Stenzle_startup())
     except KeyboardInterrupt:
         LOGGER.info("Bot stopped by user.")
+    except Exception as e:
+        LOGGER.error(f"Fatal Error: {e}")
