@@ -15,4 +15,4 @@ youtube-search-python
 youtube-search
 # Stable versions for PyTgCalls
 py-tgcalls==1.1.2
-ntgcalls>=2.1.0
+ntgcalls==1.0.5
