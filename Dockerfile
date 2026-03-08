@@ -3,9 +3,15 @@ FROM nikolaik/python-nodejs:python3.11-nodejs18
 # 1. Update pip and essential build tools
 RUN pip install --upgrade pip setuptools wheel
 
-# 2. Install ffmpeg AND tzdata (helps with time sync errors)
+# 2. Install ffmpeg, tzdata, AND build essentials for ntgcalls
 RUN apt-get update -y && apt-get upgrade -y \
-    && apt-get install -y --no-install-recommends ffmpeg tzdata \
+    && apt-get install -y --no-install-recommends \
+        ffmpeg \
+        tzdata \
+        gcc \
+        g++ \
+        python3-dev \
+        git \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -14,7 +20,8 @@ WORKDIR /app
 COPY . /app/
 
 # 4. Install dependencies
+# Note: Ensure requirements.txt has ntgcalls>=1.0.4
 RUN pip3 install --no-cache-dir --upgrade -r requirements.txt
 
-# 5. Start the bot (ensure main.py is in the root folder)
+# 5. Start the bot
 CMD ["python", "main.py"]
