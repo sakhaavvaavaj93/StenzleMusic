@@ -10,7 +10,7 @@ from hydrogram.errors import (
 from hydrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from pytgcalls import StreamType
 from pytgcalls.exceptions import NoActiveGroupCall, UnMuteNeeded
-from pytgcalls.types import AudioPiped, HighQualityAudio
+from pytgcalls.types import MediaStream, AudioQuality
 from youtube_search import YoutubeSearch
 
 from config import DURATION_LIMIT
@@ -196,14 +196,13 @@ async def play(_, message: Message):
         )
         position = len(Stenzledb.get(message.chat.id))
     else:
-        stream = AudioPiped(file_path, audio_parameters=HighQualityAudio())
+        # Fixed: Updated to MediaStream and AudioQuality.STUDIO
+        stream = MediaStream(file_path, audio_quality=AudioQuality.STUDIO)
         try:
             await pytgcalls.join_group_call(
                 message.chat.id,
                 stream,
-                stream_type=StreamType().pulse_stream,
             )
-
         except NoActiveGroupCall:
             return await Stenzle.edit_text(
                 "**» ɴᴏ ᴀᴄᴛɪᴠᴇ ᴠɪᴅᴇᴏᴄʜᴀᴛ ғᴏᴜɴᴅ.**\n\nᴩʟᴇᴀsᴇ ᴍᴀᴋᴇ sᴜʀᴇ ʏᴏᴜ sᴛᴀʀᴛᴇᴅ ᴛʜᴇ ᴠɪᴅᴇᴏᴄʜᴀᴛ."
