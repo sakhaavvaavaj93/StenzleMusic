@@ -3,7 +3,8 @@ from os import getenv
 import asyncio
 import logging
 import time
-from pyrogram import Client, filters, idle
+# CHANGE: Import from hydrogram instead of pyrogram
+from hydrogram import Client, filters, idle 
 from pytgcalls import PyTgCalls
 import config
 
@@ -21,12 +22,13 @@ logging.basicConfig(
     handlers=[logging.FileHandler("Stenzlelogs.txt"), logging.StreamHandler()],
     level=logging.INFO,
 )
-# Suppress noisy logs from libraries
-logging.getLogger("pyrogram").setLevel(logging.ERROR)
+
+# CHANGE: Update logger suppression to hydrogram
+logging.getLogger("hydrogram").setLevel(logging.ERROR)
 logging.getLogger("pytgcalls").setLevel(logging.ERROR)
 LOGGER = logging.getLogger("StenzleMusic")
 
-# 3. Client Definitions
+# 3. Client Definitions (Now using Hydrogram Client)
 app = Client(
     "StenzleBot",
     api_id=API_ID,
@@ -41,11 +43,11 @@ app2 = Client(
     session_string=STRING_SESSION
 )
 
-from pytgcalls import PyTgCalls
+# Initialize PyTgCalls
 try:
     pytgcalls = PyTgCalls(app2)
 except Exception as e:
-    print(f"Failed to initialize PyTgCalls: {e}")
+    LOGGER.error(f"Failed to initialize PyTgCalls: {e}")
     pytgcalls = None
 
 # 4. Global variables & Helper Logic
