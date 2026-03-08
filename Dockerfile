@@ -3,9 +3,8 @@ FROM nikolaik/python-nodejs:python3.11-nodejs18
 # 1. Update pip
 RUN pip install --upgrade pip setuptools wheel
 
-# 2. Add cmake to the list of build tools
-RUN apt-get update -y && apt-get upgrade -y \
-    && apt-get install -y --no-install-recommends \
+# 2. Install system dependencies
+RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends \
         ffmpeg \
         tzdata \
         gcc \
@@ -15,7 +14,7 @@ RUN apt-get update -y && apt-get upgrade -y \
         cmake \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-
+    
 WORKDIR /app
 COPY . /app/
 
