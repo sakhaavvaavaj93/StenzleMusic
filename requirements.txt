@@ -14,5 +14,5 @@ yt-dlp
 youtube-search-python
 youtube-search
 # Stable versions for PyTgCalls
-py-tgcalls>=2.2.11
+py-tgcalls==1.1.2
 ntgcalls>=2.1.0
