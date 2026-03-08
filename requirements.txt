@@ -13,6 +13,7 @@ hydrogram
 
 # The missing search library
 youtube-search-python
+youtube-search
 
 # Stable versions for PyTgCalls
 py-tgcalls>=2.2.11
