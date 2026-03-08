@@ -1,13 +1,8 @@
-
 import os
-
-from pyrogram import filters
-from pyrogram.types import Message
-
+from hydrogram import filters
+from hydrogram.types import Message
 from config import OWNER_ID
 from StenzleMusic import app
-
-
 @app.on_message(filters.command(["clearcache", "rmdownloads"]) & filters.user(OWNER_ID))
 async def clear_misc(_, message: Message):
     try:
