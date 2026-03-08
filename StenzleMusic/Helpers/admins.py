@@ -1,8 +1,8 @@
 
 from typing import Callable
 
-from pyrogram.enums import ChatMemberStatus
-from pyrogram.types import CallbackQuery, Message
+from hydrogram.enums import ChatMemberStatus
+from hydrogram.types import CallbackQuery, Message
 
 from StenzleMusic import SUDOERS, app
 
