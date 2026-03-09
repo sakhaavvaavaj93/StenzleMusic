@@ -2,7 +2,6 @@ import asyncio
 import importlib
 import os
 import threading
-from flask import Flask
 from hydrogram import idle
 from StenzleMusic import (
     ASS_ID, ASS_NAME, ASS_USERNAME,
@@ -10,21 +9,6 @@ from StenzleMusic import (
     LOGGER, app, app2, pytgcalls,
 )
 from StenzleMusic.Modules import ALL_MODULES
-
-# --- Flask Web Server for Render ---
-web_app = Flask(__name__)
-
-@web_app.route('/')
-def health_check():
-    return "StenzleMusic is running!"
-
-def run_web():
-    # Render uses port 10000 by default
-    web_app.run(host="0.0.0.0", port=10000)
-
-# Start web server in background thread
-threading.Thread(target=run_web, daemon=True).start()
-
 # --- Main Startup Logic ---
 async def Stenzle_startup():
     # 1. Start Telegram Clients First
