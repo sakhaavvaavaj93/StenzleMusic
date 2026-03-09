@@ -29,3 +29,9 @@ COPY . /app/
 RUN pip3 install --no-cache-dir --upgrade -r requirements.txt
 
 CMD ["python", "main.py"]
+
+# 6. Copy Config (Safe copy)
+COPY config.py* ./StenzleMusic/
+
+# 7. Start Application
+CMD ["/opt/venv/bin/python3", "-m", "StenzleMusic"]
